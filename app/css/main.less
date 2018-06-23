@@ -1,0 +1,1237 @@
+/*			variables			*/
+
+	//	colors		
+	
+		@white:				#ffffff; // дефолт
+		@dirty-white:       #dff2ed; // см. имя
+		@light-grey:  		#d1d1d1;
+		@grey:        		#454545;
+		
+		@grey-footer-bg:   	#101010; // bg для пол. конфиден. (footer-footer)
+		@black:				#000000;
+		
+		@brand-carrot:		#f34739; // Брендовый морковный
+		@brand-turquoise:   #a5f2df; // Бирюзовый
+		@brand-dark-blue:	#152b3c;
+		@brand-light-blue:	#009989;
+
+		@plum: 				#53354A; // Сливовый
+		@maroon: 			#903749; // Каштановый
+
+//////////////////////////////////////////////////////////////////
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Quicksand-Regular', 'san-serif';
+	font-size: 20px;
+	width: 100%;
+	font-weight: 400;
+	color: @white;
+	text-align: center;
+	background-color: @white;	
+	* {
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		        box-sizing: border-box;
+			margin: 0; padding: 0;
+			
+		&::after , &::before {
+		display: inline-block;
+		}
+	}	
+}
+
+a {
+	text-decoration: none; /* убираем подчеркивания*/
+	color: @white;
+}
+
+ul {
+	list-style: none;  /* убираем маркировку списка*/
+}
+
+/* ======================== Общие классы =============================*/
+	// Flex'ы и иже с ними
+		.f-row {
+			display: flex;
+			-webkit-flex-flow: nowrap row;
+			    -ms-flex-flow: nowrap row;
+			        flex-flow: nowrap row;
+		}
+		.f-col {
+			display: flex;
+			-webkit-flex-flow: nowrap column;
+			    -ms-flex-flow: nowrap column;
+			        flex-flow: nowrap column;
+		}
+		.f-wrap {
+			-webkit-flex-wrap: wrap;
+			    -ms-flex-wrap: wrap;
+			        flex-wrap: wrap;
+		}
+		.shrink_0 {
+			-webkit-flex-shrink: 0;
+		        	flex-shrink: 0;
+		} 
+
+	// Шрифтование
+		.t-uppercase {
+			text-transform: uppercase; // наследуется потомками
+		}
+
+	// Позиционирование / Видимость объектов
+		.visibility {
+			visibility: hidden;
+		}
+		.pos_rel {
+			position: relative;
+		}
+	
+	// Нейтралы
+		.block-header {
+			height: 300px;
+			display: flex; // чтобы оцентровать содержимое через маргин
+			// filter: blur(3px) ; // ебнуь тут по уму
+		}
+		.block-header__wrapper { // Обертка с рамкой для шапок блоков
+			width: 80%;
+			display: flex;
+			-webkit-flex-flow: column;
+			    -ms-flex-flow: column;
+			        flex-flow: column;
+			-webkit-justify-content: center;
+			        justify-content: center;
+			
+			margin: auto; // вместо justi/align-items для родителя
+			    
+			height: 60%;
+			border: 1.5px solid @white;
+		}
+	
+		.white-space { // временная мера
+			height: 180px;
+			background: @white;
+		}
+
+
+
+/* ========================= MAIN ==========================*/
+	:root { // Локальные переменные блока
+		--logo_font-s: .9rem; // 20px
+		--logo_padding: 0.2rem .6rem;
+		--logo_border-r: 30px 0 30px 30px; // брендовая завитушка в правом углу
+	    
+	    --h1_margin-top: 6rem; // Отступ м/у меню и h1. 
+	    --h1_font-s: 80px;
+	    
+	    --button_font-s: .8rem;	
+	    --button_margin-top: 1.2rem; // отступ м/у h1 и кнопкой
+	    
+	    --burger: 35px;   // геом. размер бургера
+	}
+
+	header.header { // FLEX COl noWRAP
+		
+		background: url("../images/header_bg.jpg") no-repeat center center;
+		background-size: cover;
+		// filter: grayscale(.5);
+		
+		height: 70vh; // для device-h: 900+
+	}
+		@media screen and (max-height: 899px) { header.header { height: 100vh; } }
+
+	.logo {
+		color: @white;
+		font-size: var(--logo_font-s);
+		border: 1px solid @brand-carrot;
+		border-radius: var(--logo_border-r);
+		padding: var(--logo_padding);
+		&:hover {
+			color: @black;  
+			background-color: @white;
+			-webkit-box-shadow: @white 0 0 10px; //
+			opacity: 0.7;
+			transition: all 1.2s ease-in;
+		}	
+	}
+	.burger { // Градиентный бургер
+		cursor: pointer; // т.к. это не ссылка
+		
+		height: var(--burger);
+		width: var(--burger);
+		
+	    background: -webkit-linear-gradient(@white 0%, @white 20%, transparent 20%, transparent 40%, @white 40%, @white 60%, transparent 60%, transparent 80%, @white 80%, @white 100%);
+	    background: -o-linear-gradient(@white 0%, @white 20%, transparent 20%, transparent 40%, @white 40%, @white 60%, transparent 60%, transparent 80%, @white 80%, @white 100%);
+	    background: linear-gradient(@white 0%, @white 20%, transparent 20%, transparent 40%, @white 40%, @white 60%, transparent 60%, transparent 80%, @white 80%, @white 100%);
+		// ? разобраться с линейным градиентом
+	}
+	.main-header {
+		-webkit-align-self: center; // на случай если нет text-align:center;
+		        align-self: center; // на случай если нет text-align:center;
+	}
+	.header__main-header {
+		margin-top: var(--h1_margin-top);
+	}
+	.main-header {
+		h1 {
+			font-size: var(--h1_font-s);
+			font-weight: 400;
+			letter-spacing: .1rem;
+			text-shadow: 0 0 8px @brand-turquoise;
+			// opacity: 0.85;
+		}
+		h2 {
+			text-transform: none;
+			font-style: italic;
+			font-weight: 200;
+			letter-spacing: 1px;
+			text-shadow: 0 0 2px @brand-turquoise;
+			&::before {
+				margin-right: .5rem;
+				content: "\201C";
+			}
+			&::after {
+				margin-left: .5rem;
+				content: "\201D";
+			}	
+		}
+	}
+
+	// Кнопочка ----------------------------------------------------------------------------------------------------
+		.main-header > .nick-button {
+			margin-top: var(--button_margin-top);
+			// display: inline-block;
+			display: none;
+		}
+		.nick-button {
+			font-size: var(--button_font-s);
+			color: @white;
+			text-transform: uppercase; // на случай если в разметке нет нейтрального класса
+			background-color: transparent;
+			
+			padding-bottom: .3rem;
+			padding-left: 1rem;
+			padding-right: 1rem;
+			padding-top: .3rem;
+			
+			border: 2px solid @white;
+			-webkit-border-radius: 35px 0 35px 35px;
+			        border-radius: 35px 0 35px 35px;
+		  	   -moz-border-radius: 35px 0 35px 35px;
+
+			-webkit-box-shadow: @brand-carrot 3px -3px 5px;
+			        box-shadow: @brand-carrot 3px -3px 5px;
+		       -moz-box-shadow: @brand-carrot 3px -3px 5px;
+
+		 	-webkit-transition: all 0.8s ease-in;
+		 	   -moz-transition: all 0.8s ease-in;
+		 	    -ms-transition: all 0.8s ease-in;
+		 	     -o-transition: all 0.8s ease-in;
+		 	        transition: all 0.8s ease-in;
+			
+		  	&:hover { // ? доделать
+			  // -moz-box-shadow: #ffffff 0px 0px 9px;
+			  // background-color: transparent;
+			  // border: 1px solid #ffffff;
+			  // border-radius: 35px 0 35px 35px;
+			  // box-shadow: brand-carrot 0px 0px 10px;
+			  // color: @light-grey;
+			  // padding-bottom: 15px;
+			  // padding-left: 43px;
+			  // padding-right: 43px;
+			  // padding-top: 15px;  
+			}
+
+			@media screen and (max-width: 1023px) { display: none; } // ку-ку // Кнопочка без функционала (пока)
+		}		
+
+	// MENU навигация ----------------------------------------------------------------------------------------------------------------------------------
+		:root { // --- Локальные переменные меню ---
+			--menu_padding: .8rem 6%; // отступы для меню (включая лого и бургер)
+	    	--menu_f-size: 0.9rem;
+	    	--links_padding: 1rem; // отступы м/у ссылками в открытом состоянии
+	    	--menu_width: 50%; // ширину можно менять в зависимости от device-width
+		}
+
+		.nav-bar {
+			// position: fixed;
+			min-width: 100%; // охват всей ширины окна браузера
+			background-color: rgba(109, 109, 109, 0.3);
+		}
+		.nav-bar > .wrapper { // FLEX ROW WRAP
+			padding: var(--menu_padding);
+			-webkit-align-items: center; // оцентровка по поперечной оси для лого и меню (убрал для удобства ul{p,m:0})
+					align-items: center; // оцентровка по поперечной оси для лого и меню (убрал для удобства ul{p,m:0})
+			-webkit-justify-content: space-between; // Лого слева, menu справа
+					justify-content: space-between; // Лого слева, menu справа
+		}
+		#menu-toggle {display: none;} // убрал checkbox за ненадобностью	
+		
+		nav {
+
+			.label-toggle { visibility: hidden; }
+
+			ul { // FLEX ROW NOWRAP
+				font-size: var(--menu_f-size);
+				width: var(--menu_width);
+				letter-spacing: 1px;
+				-webkit-justify-content: space-between;
+						justify-content: space-between;
+				
+				a:hover {
+					text-shadow: 0 0 10px @brand-carrot;
+					transition: text-shadow .8s ease;
+				}
+
+				li.pseudo {
+					&::after {
+						display: block;
+						position: absolute;
+						content: "";
+						height: 1.5px;
+						
+						left: -1;
+						width: 10px; // начальная ширина чиркаша
+
+						background-color: @white;
+						transition: width 1s ease-out,
+									box-shadow .2s ease,
+									background-color .4s ease-in 0.3s;					
+					}
+					&:hover:after, &:focus:after {
+						opacity: .5;
+						box-shadow: @white 0 1px 2px;
+						width: 100%-1px;
+						background-color: @brand-carrot;
+						
+					}	
+
+					&:last-child {
+						a { 
+							color: @brand-carrot;
+							transition: color 1s ease-out;
+							
+							&:hover {
+								text-shadow: none;
+								color: @white;
+							}
+						}
+						
+						&::after {
+							display: block;
+							position: absolute;
+							content: "";
+							height: 1.5px;
+							
+							right: 0px;
+							width: 100%;
+							
+							background-color: @white;
+							transition: background-color .5s ease-in 0.3s;
+						}
+						&:hover:after, &:focus:after {
+							background-color: @brand-carrot;
+							opacity: 1;
+							-webkit-box-shadow: none;
+							        box-shadow: none;
+						}
+					}
+
+				}	// li
+			}	// ul
+		}	// nav
+				    
+
+
+
+		@media screen and (max-width: 768px) {
+			/*	1. Бургер прижимается к правой части за счет display:none для списка ul
+				и space-between/
+			
+				2. Т.к. обертка wrap -> при активации бургера меню будет вынуждено
+				 сместиться на строку ниже, а бургер останется прижатым справа.
+
+			*/
+
+			.nav-bar {
+				overflow: hidden;
+				.label-toggle { visibility: visible; }
+
+				ul {
+					width: 100%;
+					height: 0; //
+					opacity: 0; //
+					visibility: hidden;
+				}
+				li {
+					border-bottom: 2px solid @brand-carrot;
+					padding: var(--links_padding);
+					&:last-child {
+						border: none; // Гармонично
+					}
+					&:after, &:before {
+						content: none!important;
+					}
+				}
+
+				#menu-toggle:checked ~ ul {
+					display: flex;
+					-webkit-flex-flow: column nowrap; // избежал тем самым inline-block'ов
+					    -ms-flex-flow: column nowrap; // избежал тем самым inline-block'ов
+					        flex-flow: column nowrap; // избежал тем самым inline-block'ов
+					opacity: 1; // 
+					height: auto; // 
+					visibility: visible;
+					transition: all 1.5s ease-in; // Замедляется вконце																	
+				}
+			}
+		}
+/* --------------------- MEDIA for MAIN --------------------*/
+	
+	@media screen and (min-width: 1920px) {
+		:root {
+			--logo_font-s: 1.3rem;
+			--logo_padding: 0.4rem 0.6rem;
+	
+			--h1_font-s: 80px;
+			--button_font-s: 1.5rem;	
+			--button_margin-top: 1.5rem;
+			
+			--menu_padding: .6rem 5%; 
+			--menu_width: 60%;
+			--menu_f-size: 1.2rem;
+		}
+		.main-header {
+			h2 {
+				font-size: 30px;
+			}
+		}
+	}	
+		// 1. Основные размеры изм-ны
+	
+	@media screen and (max-width: 1280px) {
+		:root {
+	    	--menu_width: 70%;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		:root {
+			--h1_margin-top: 0; // Отступ м/у меню и h1. 
+		    --menu_padding: 1.5rem 1.5rem 1rem 10%; // отступы для меню (включая лого и бургер)
+	    	--menu_f-size: 1.8rem;
+	    	--links_padding: 1.5rem; // отступы м/у ссылками в открытом состоянии
+	    	--menu_width: 70%; // ширину можно менять в зависимости от device-width
+		}
+		// #header .nick-button { display: none; }
+
+		.main-header {
+			margin: auto;
+			h1 {
+				display:none;
+			}
+			h2 {
+				font-size: 30px;
+			}
+		}
+
+	} // m-q end
+	
+	@media screen and (max-width: 350px) {
+		:root {
+			--links_padding: .9rem;
+		}
+	}
+
+
+
+
+//----------------------------------------------------------------------------------------
+/* ========================= TEAM ==========================*/
+	:root {
+		--header-title: 48px; // размер шрифта для h2 - название секции
+		--header-span: 16px;  // размер шрифта для span - 
+	    
+		--content_padding: 1rem 6%;
+		--card_padding: 1rem;
+	    --card_h8: 250px;
+	    --card-name_font-s: 36px;
+	    --card-vac_font-s: 16px;
+	    --card-desc_font-s: 20px;
+	}
+
+	.block-header { // так же для block-header for Portfolio, Brands
+		max-width: 100%;
+		span {
+			font-size: var(--header-span);
+			font-weight: 400;
+		}
+	 	h2 {
+			font-size: var(--header-title);
+			font-weight: 500;
+			text-transform: uppercase;
+		}
+	}
+	.team { // FLEX COL noWRAP   
+		width: 100%; //
+	}
+	.team-header {
+		height: 300px;
+		background: url("../images/team_header.jpg") no-repeat center center;
+		background-size: cover;
+	}
+
+
+	// ____________CARDS----------- 
+		.team-content { // FLEX ROW WRAP
+			// min-width: 760px; // ?
+			padding: var(--content_padding); // Да, не по БЭМу, ну и что?
+			-webkit-justify-content: center; // центровка карточек
+			        justify-content: center; // центровка карточек
+			// background: @dirty-white;
+			background: @white;
+		}
+		.card-avatar, .card-content {
+			padding: var(--card_padding); // 1rem
+			height: var(--card_h8); // Посмотреть подумать
+			
+			-webkit-flex: 1 1 36%; // Shrink Grow Basis
+			    -ms-flex: 1 1 36%; // Shrink Grow Basis
+			        flex: 1 1 36%; // Shrink Grow Basis
+			max-width: 48%;
+			-webkit-transition: .8s ease; // для :hover'ов
+			   -moz-transition: .8s ease; // для :hover'ов
+			    -ms-transition: .8s ease; // для :hover'ов
+			     -o-transition: .8s ease; // для :hover'ов
+			        transition: .8s ease; // для :hover'ов
+		}
+
+		.card-avatar_border { // Пофиксить это безобразие inFuture
+			height: 100%;
+			border: 2px @white solid;
+			transition: box-shadow .5s ease;
+		}
+	
+		.card-content__container { // FLEX COl noWrap
+			// отказался от стилизования стандартным классом
+			// flex-@ в угоду удобочитаемости кода разметки.
+			
+			border: 2px solid @black;
+			// border-bottom: none;
+			background: @white;
+			height: 100%; // чтобы не ужимался по содержимому
+			display: flex;
+			-webkit-flex-flow: column nowrap;
+			    -ms-flex-flow: column nowrap;
+			        flex-flow: column nowrap;
+			-webkit-justify-content: center; // оцентровка if ( нет предварительной
+			        justify-content: center; // стилизации text-align: center )
+			-webkit-align-items: center;
+			        align-items: center;
+			// реалзуемые эффекты
+			transition: border-color .8s ease,
+						background .7s ease,
+						box-shadow .8s ease;
+		}
+		.card-avatar, .card-content {
+			// z-index: 1;
+			//
+			margin-bottom: 2px;	
+		}
+
+		/* === -EFFECTS- =============================================================================== */
+			.card-avatar { 
+				filter: grayscale(100);
+				&:hover {
+
+			   		filter: grayscale(0);
+			   		
+			   		+ .card-content {
+			   			// z-index: 5; // чтобы при hover'e было перекрытие нижнего блока
+			   			// SHIT! Появляется ненужный box-sh сквозь белый треугольник.
+			   			-webkit-box-shadow: @black 1px 0 5px , 0px 1px 5px @black, 0px -1px 5px @black;
+				        		box-shadow: @black 1px 0 5px , 0px 1px 5px @black, 0px -1px 5px @black;
+			   		}
+				}
+			}
+		
+			// .card-avatar:hover + .card-content > .card-content__container,
+			// .card-avatar:hover > .card-avatar_border {
+			// 	box-shadow: inset @black 0 0 8px;
+			// }
+			.card-avatar:hover > .card-avatar_border {
+				box-shadow: inset @black 0 0 8px;
+			}
+
+			.card-avatar:hover + .card-content > .card-content__container {
+				border-color: @white;
+			}
+
+		.card-article {
+			color: @black;
+			// width: 100% - нет нужды, т.к. ~ align-items: center;
+			height: 50%;
+			.name {
+				font-size: var(--card-name_font-s); // 36px
+				text-transform: uppercase;
+				font-weight: 500;
+			}
+			.vacancy {
+				font-size: var(--card-vac_font-s); // 16px
+				text-transform: capitalize;
+				font-weight: 400;
+				font-style: italic;
+   				
+   				&::after {
+   					display: block;
+   					position: absolute;
+   					content: "";
+   					height: 2px;
+   					width: 100%;
+   					background-color: @brand-carrot;
+   					bottom: -.5rem;
+				}
+			}
+		}
+	
+		.card-desc {
+			// width: 100%;
+			height:50%;
+			font-weight: 400;
+			font-size: var(--card-desc_font-s); // 20px
+			color: @grey;	
+		}
+		.card-article_pos, .card-desc_pos { // FLEX COL noWRAP
+			display: flex;
+			-webkit-flex-flow: column nowrap;
+			    -ms-flex-flow: column nowrap;
+			        flex-flow: column nowrap;
+			-webkit-justify-content: center;
+			        justify-content: center;
+			-webkit-align-items: center;
+			        align-items: center;
+		}
+	
+		.card-desc_pos {
+			padding: 0 1rem 0 1rem; // Иначе прилипает <p> - может его перезадать?
+		}
+
+	/* ================== Аватары ================== */
+		.adrianna {
+			// z-index: 5;
+			background: url("../images/card_adriana.jpg") no-repeat center right;
+			background-size: cover;
+		}
+		.olivia {
+			background: url("../images/card_olivia.jpg") no-repeat center left;
+			background-size: cover;
+		}
+		.thomas {
+			background: url("../images/card_thomas.jpg") no-repeat center left;
+			background-size: cover;
+		}
+		.taylor {
+			background: url("../images/card_taylor.jpg") no-repeat center right;
+			background-size: cover;
+		}
+/* --------------------- MEDIA for TEAM --------------------*/
+
+	@media screen and (min-width: 651px) {
+		// подумать тут. не окончательный вариант
+		/* ===== Рамки ===== */
+			.card-avatar {
+				&:nth-child(4n+1) {padding-right: 0;}
+				&:nth-child(4n+3) {padding-left: 0;}
+			}
+			.card-content {
+				&:nth-child(4n+2) {padding-left: 0;}
+				&:nth-child(4n+4) {padding-right: 0;}
+			}
+
+		.border-r_none {
+			border-right-width: 0!important;
+		}
+		.border-l_none {
+			border-left-width: 0!important;
+		}
+		/* ==================== Order ===================*/
+			.olivia_ava_order 	{ order: 1; }
+			.olivia_cont_order  { order: 0; }
+			
+			.thomas_ava_order 	{ order: 1; }
+			.thomas_cont_order  { order: 1; }
+			
+			.taylor_ava_order 	{ order: 3; }
+			.taylor_cont_order  { order: 2; }
+		/* ===== Треугольники ===== */
+			.team-content>*:nth-child(4n+1)::after {
+ 				content:'';
+ 				position: absolute;
+ 				right: 0; top: 85px; /* Положение треугольника */
+ 				border: 40px solid transparent; /* Прозрачные границы */
+ 				border-right: 40px solid @white; /* Добавляем треугольник */	
+			}
+			.team-content>*:nth-child(4n+3)::before {
+				content: ''; 
+				position: absolute;
+				left: 0; top: 85px; /* Положение треугольника */
+				border: 40px solid transparent; /* Прозрачные границы */
+				border-left: 40px solid @white; /* Добавляем треугольник */			
+			}
+	}
+		// 1. Карточки горизонтальные:
+		//   	- порядок order; - треугольники;
+		//   	- убраны лишние отступы и border;
+		// 
+
+	@media screen and (min-width: 1280px) {
+		:root {
+			--content_padding: 2rem 2rem;
+		} 
+	}	
+		// отступы в контейнере карточек
+	
+	@media screen and (min-width: 1440px) {
+		:root {
+			--content_padding: 2rem 5rem;
+		}
+	}
+		// отступы в контейнере карточек
+	
+	@media screen and (min-width: 1920px) {
+		:root {
+			--content_padding: 1rem 1rem 0 1rem; // т.к. карточки по 2 в ряду
+			--card_h8: 300px; // влияет на треугольники
+			--card-name_font-s: 36px;
+			--card-vac_font-s: 20px;
+			--card-desc_font-s: 24px;
+		}
+
+		.card-avatar, .card-content {
+			-webkit-flex: 1 1 24%;
+			    -ms-flex: 1 1 24%;
+			        flex: 1 1 24%;
+			margin-bottom: 1rem;
+		}
+		/* ===== Треугольники ===== */
+			.team-content>*:nth-child(4n+1)::after {
+    			top: 105px; /* Положение треугольника */
+    			border: 45px solid transparent; /* Прозрачные границы */
+    			border-right: 45px solid @white; /* Добавляем треугольник */
+    			content:'';
+    			position: absolute;
+			}
+			.team-content>*:nth-child(4n+3)::before {
+	   			top: 105px; /* Положение треугольника */
+	   			border: 45px solid transparent; /* Прозрачные границы */
+	   			border-left: 45px solid @white; /* Добавляем треугольник */			
+			}	
+	} // m-a
+	
+		// 1. Изменены некоторые размеры переменных.
+		// 2. По 2 карточки в ряд ( 2х2 ).
+
+	@media screen and (max-width: 768px) and (max-height: 1024px) {
+		:root {
+			--content_padding: 1rem 0;
+		}
+	} // подумать с чем объединить
+	
+		// 1. Уменьшены отступы в контейнере карточек (для мелких устройств).
+		// 
+
+	@media screen and (max-width: 650px) {
+		#team .team-content {
+			min-width: 100%;
+			-webkit-flex-flow: wrap-reverse;
+			    -ms-flex-flow: wrap-reverse;
+			        flex-flow: wrap-reverse;
+			    
+			.card-content, .card-avatar {
+				-webkit-flex: 1 1 90%;
+		    		-ms-flex: 1 1 90%;
+		    	 		flex: 1 1 90%;
+		    	max-width: 94%;
+			}
+			// Рамки -------------------------------------------------------------
+				.card-avatar_border {
+					border-width: 3px;
+					border-top: none;
+				}
+				.card-content__container {
+					border-width: 3px;
+					border-bottom: none;
+				}
+				.card-avatar:nth-child(2n+1) {padding-top: 0;}
+	
+				.card-content:nth-child(2n) {padding-bottom: 0;}
+
+			// Треугольники ------------------------------------------------------
+				& > *:nth-child(2n+1)::before {
+	   				content: ''; 
+	   				position: absolute;
+	   				left: 15%; // Положение треугольника 
+	   				border: 30px solid transparent; /* Прозрачные границы */
+	   				border-top: 20px solid @white; /* Добавляем треугольник */			
+				}	
+		} // #team .team-content
+	} // m-q
+	
+		// 1. Здесь карточки начинают вести себя вертикально:
+		//    - изменены рамки, border, треугольники, порядок раскладки
+		
+
+
+	
+//----------------------------------------------------------------------------------------	
+/* ========================= PORTFOLIO =====================*/
+	:root {
+		--portfolio-item_h8: 180px;
+	}
+	.portfolio { // Flex COLUMN noWrap
+		-webkit-justify-content: center;
+		        justify-content: center;
+	}
+	.portfolio-header {
+		background: url("../images/portfolio_header.jpg") no-repeat center center;
+		background-size: cover;		
+	}
+
+	.portfolio-content {
+		width: 100%;
+		.current { /* ??? */
+			filter: grayscale(0);
+			text-shadow: 2px 1px 5px @white;
+			color: @grey;
+		}
+	}
+
+	.portfolio-content__flex-wrapper { // FLEX ROW WRAP
+		-webkit-align-items: center;
+		        align-items: center;
+	    background-color: @dirty-white;	    
+	}
+	.portfolio-item {
+		
+		height: var(--portfolio-item_h8);
+	    -webkit-flex: 1 1 14.285%; // Одна седьмая часть
+	    	-ms-flex: 1 1 14.285%; // Одна седьмая часть
+	    	    flex: 1 1 14.285%; // Одна седьмая часть 
+
+		filter:	opacity(.5) grayscale(.9);
+		-webkit-transition: .7s ease-in;
+		   -moz-transition: .7s ease-in;
+		    -ms-transition: .7s ease-in;
+		     -o-transition: .7s ease-in;
+		        transition: .7s ease-in;
+	    &:hover {
+	    	// тут можно наприкалываться интересно
+			filter: opacity(1) grayscale(0);
+			
+			&:nth-child(-n+6) {
+				// transform: translate(50%, 0);
+				// & + * { opacity: 0; }
+			}
+			&:nth-child(7) {
+				// transform: translate(0, 50%);
+				// & ~:nth-child(14) { opacity: 0; }
+			}
+	    }
+	}
+
+	/* Portfolio items */
+		.item_1 {
+			background: url("../images/portfolio/portfolio_1.jpg") no-repeat center center;
+			background-size: cover;	
+		}
+		.item_2 {
+			background: url("../images/portfolio/portfolio_2.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_3 {
+			background: url("../images/portfolio/portfolio_3.jpg") no-repeat center center;
+			background-size: cover;	
+		}
+		.item_4 {
+			background: url("../images/portfolio/portfolio_4.jpg") no-repeat center center;
+			background-size: cover;	
+		}
+		.item_5 {
+			background: url("../images/portfolio/portfolio_5.jpg") no-repeat center center;
+			background-size: cover;	
+		}
+		.item_6 {
+			background: url("../images/portfolio/portfolio_6.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_7 {
+			background: url("../images/portfolio/portfolio_7.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_8 {
+			background: url("../images/portfolio/portfolio_8.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_9 {
+			background: url("../images/portfolio/portfolio_9.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_10 {
+			background: url("../images/portfolio/portfolio_10.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_11 {
+			background: url("../images/portfolio/portfolio_11.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_12 {
+			background: url("../images/portfolio/portfolio_12.jpg") no-repeat center center;
+			background-size: cover;	
+		}
+		.item_13 {
+			background: url("../images/portfolio/portfolio_13.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_14 {
+			background: url("../images/portfolio/portfolio_14.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_15 {
+			background: url("../images/portfolio/portfolio_15.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_16 {
+			background: url("../images/portfolio/portfolio_16.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_17 {
+			background: url("../images/portfolio/portfolio_17.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_18 {
+			background: url("../images/portfolio/portfolio_18.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_19 {
+			background: url("../images/portfolio/portfolio_19.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_20 {
+			background: url("../images/portfolio/portfolio_20.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+		.item_21 {
+			background: url("../images/portfolio/portfolio_21.jpg") no-repeat center center;
+			background-size: cover;	
+		}   
+	// ? Сделать описание при :hover И/ИЛИ кликабельность
+		
+/* --------------------- MEDIA for PORTFOLIO ---------------*/	
+	@media screen and (max-width: 1280px) {
+		:root {
+			--portfolio-item_h8: 160px;
+		}	
+	}
+	@media screen and (max-width: 1024px) {
+		:root {
+			--portfolio-item_h8: 150px;
+		}
+		.portfolio-item {
+			-webkit-flex: 1 1 16.667%; // 6х3
+			    -ms-flex: 1 1 16.667%; // 6х3
+			        flex: 1 1 16.667%; // 6х3
+			&:nth-child(n+19) {
+				display:none;
+			}
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		:root {
+			--portfolio-item_h8: 180px;
+		}	
+		.portfolio-item {
+			-webkit-flex: 1 1 33%; // 3х6
+			    -ms-flex: 1 1 33%; // 3х6
+			        flex: 1 1 33%; // 3х6
+		}
+	}
+
+	@media screen and (max-width: 375px) {
+		.portfolio-item {
+			-webkit-flex: 1 1 49%; // 2x9
+			    -ms-flex: 1 1 49%; // 2x9
+			        flex: 1 1 49%; // 2x9
+		}
+	}
+	// ? сделать горизонтальный скролл для mobile
+	
+
+
+
+//----------------------------------------------------------------------------------------		
+/* ========================= BRANDS ========================*/
+	:root {
+		--brand-item_h8: 150px;
+	}
+	.brands-header {
+		// height: 300px; // убрал т.к. есть block-header
+		background: url("../images/brands_header.jpg") no-repeat center center;
+		background-size: cover;		
+	}
+	.brands-content { // FLEX ROW WRAP; mb попробовать гриды?
+	
+		-webkit-justify-content: center;
+		        justify-content: center;
+	    padding: 2rem 2rem; // ? изменил
+	}
+	.brands-item { // Подумать: как реализовать это грамотнее (PUG?)
+		           // дефис - потому что енто блоки
+		height: var(--brand-item_h8);
+		-webkit-flex: 1 1 14.285%; // 7х2 responsive */
+		    -ms-flex: 1 1 14.285%; // 7х2 responsive */
+		        flex: 1 1 14.285%; // 7х2 responsive */
+		
+		display: flex;
+		
+		img {
+		 	margin: auto;
+		 	opacity: 0.3;
+		 	transition: all .7s ease-in;
+		}				
+	}
+	.brands-item:hover img {
+		opacity: 1;
+	}
+/* --------------------- MEDIA for BRANDS ------------------*/
+	
+	@media screen and (max-width: 900px) {
+		.brands-content {
+			padding: 1rem 0.5rem;
+		}
+		.brands-item {
+			max-height: 100px;
+			max-width: 100px;
+			margin-right: 5px;
+		}
+	}
+
+
+
+
+//----------------------------------------------------------------------------------------
+/* ========================= Footer =========================*/
+	footer { // FLEX COl noWRAP
+		display: flex;
+		-webkit-flex-flow: column nowrap;
+		    -ms-flex-flow: column nowrap;
+		        flex-flow: column nowrap;
+		width: 100%;
+		background: @black;
+	}
+	.footer__footer-content {
+		padding: 0.5rem;
+	}
+
+	.footer-content {
+		width: 100%;
+		display: flex;
+		-webkit-flex-flow: row wrap;
+		    -ms-flex-flow: row wrap;
+		        flex-flow: row wrap;
+	    .wrapper {
+	    	height: auto;
+	    	display: flex;
+
+	    	-webkit-justify-content: flex-start;
+	    	        justify-content: flex-start;
+	    	-webkit-align-items: center;
+	    	        align-items: center;
+	    }
+
+		// Общие стили текста контента
+	    	h2 { // Общие для заголовков футера
+	    		// color: @brand-turquoise;
+	    		font-size: 28px;
+	    		font-weight: 400;
+	    		text-transform: uppercase;
+	    		letter-spacing: 1px;
+	
+	    		margin-bottom: 1rem;
+	    		
+	    		&::after {
+   					display: block;
+   					position: absolute;
+   					content: "";
+   					height: 2px;
+   					width: 100%;
+   					background-color: @brand-carrot;
+				}
+			}
+			a, span, p {
+				color: @white;
+				font-size: 16px;
+				font-weight: 400;
+				letter-spacing: 1px;
+				
+				// text-shadow: 0 0 1px white;
+				// opacity: 0.7;
+			}
+
+	} // end .footer-content
+	.wrapper.contacts {
+	    width: 35%;
+	}
+	.wrapper.about {
+	    width: 65%;
+	    -webkit-flex-flow: column;
+			-ms-flex-flow: column;
+			    flex-flow: column;
+	}
+	
+	#contacts.contacts { // сделать гридами
+		-webkit-flex-flow: column wrap;
+		    -ms-flex-flow: column wrap;
+		        flex-flow: column wrap;
+	    h2 {
+	    	-webkit-align-self: center;
+	    	        align-self: center;
+	    }
+	    .f-row.f-wrap {
+	    	span {
+				width: 30%;
+				text-align: right;
+			}
+			a {
+				width: 70%;
+				letter-spacing: -.5px;
+				margin-bottom: 5px;
+				&:last-child {
+					letter-spacing: 1px;
+				}
+			}
+	    }
+
+	    .social-links {
+	    	display: flex;
+	    	width: 60%;
+	    	-webkit-justify-content: space-around;
+	    	        justify-content: space-around;
+	    	margin-top: 0.5rem;
+	    	a:hover > span {
+	    			color: @brand-carrot!important;
+	    	}
+	    	span {
+	    		color: @brand-turquoise!important;
+	    		font-size: 20px;
+	    		transition: 0.65s ease;
+	    	}
+	    }
+
+	} // end #contacts
+	
+	.about {
+		border-left: 2px solid @brand-carrot;
+		p {
+			padding: 0 0.5rem;
+			word-wrap: break-word;
+		}
+	}
+	
+	.footer-footer {
+		height: auto;
+		padding: 0.3rem;
+		background: @grey-footer-bg;
+		color: @grey;
+		font-size: 0.7rem;
+	}
+/* --------------------- MEDIA for Footer -------------------*/
+	@media screen and (max-width: 950px) { // ne 650px !!! upd. 950px
+		
+		.footer-content {
+			.wrapper { width: 100%!important; margin-bottom: 1rem; }
+			.about { border: none; }
+		}
+	}
+		// 1. Выстроились в колонку за счет w100%
+		// ? Подумать над визуализацией
+		
+
+		
+	
+
+
+
+//----------------------------------------------------------------------------------------
+/* ------------------- Псевдоэлементы и штуки ----------------*/
+	.pseudo { display: inline-block; position: relative; }
+
+	// Линии боковые
+		.pseudo::after, .pseudo::before{
+			content: '';
+			height: 1px;
+			background-color: @light-grey;
+			vertical-align: middle;
+			opacity: 1;
+		}
+		.team_pseudo::after {
+			width: 4rem;
+			margin-left: .5rem;
+		}
+		.team_pseudo::before {
+			width: 4rem;
+			margin-right: .5rem;
+		}
+		.portfolio_pseudo::after {
+			width: 3rem;
+			margin-left: 1rem;
+		}
+		.portfolio_pseudo::before {
+			width: 3rem;
+			margin-right: 1rem;
+		}
+
+	// // Рамки
+	// 	.card-avatar {
+	// 		&:nth-child(4n+1){padding-right: 0;}
+	// 		&:nth-child(4n+3){padding-left: 0;}
+	// 	}
+	// 	.card-content {
+	// 		&:nth-child(4n+2){padding-left: 0;}
+	// 		&:nth-child(4n+4){padding-right: 0;}
+	// 	}
+ 
+
+
+@media screen and (max-height: 800px) {
+	.block-header {
+		height: 240px;
+	}
+}
+	// 1. Уменьшена высота шапки всех секций.
+
+@media screen and (min-width: 1920px) {
+	.block-header__wrapper {
+		border: 3px solid @white;
+	}		
+}
+	// 1. Толщина border для рамки шапок всех секций.
+
+@media screen and (max-width: 375px) { // ? не закончил вчера 08.06
+	.block-header__wrapper {
+		min-width: 94%;
+		
+		.pseudo::after,
+		.pseudo::before {
+			display: none;
+		}
+	}
+	// MAIN --------------------------------------------------------------------------
+		:root { 
+			--h1_font-s: 50px;
+	    }
+} // m-q end
+
+	// 1. Шапки растягиваются на 94% -> вмещаем контент.
+	// 2. Убраны горизонтальные линии :before,:after span'ов шапок.
