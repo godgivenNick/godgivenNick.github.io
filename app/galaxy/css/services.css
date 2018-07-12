@@ -1,0 +1,295 @@
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+html *,
+body * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  /* убираем подчеркивания*/
+}
+ul {
+  list-style: none;
+  /* убираем маркировку списка*/
+}
+.t-uppercase {
+  text-transform: uppercase;
+}
+.f {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.f-row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+.f-col {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+}
+.f-wrap {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+body {
+  background: url('../image/services/bg.jpg') no-repeat;
+  background-size: cover;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+}
+body .wrapper {
+  background-color: rgba(0, 0, 0, 0.871);
+  max-width: 1920px;
+}
+header.header {
+  width: 100%;
+  height: 260px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 60px 36px;
+}
+.header__nav-bar {
+  margin-left: 80px;
+}
+.nav-bar {
+  text-transform: uppercase;
+}
+.nav-bar ul {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+.nav-bar ul li {
+  margin-right: 32px;
+}
+.nav-bar a {
+  color: #949494;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: .5px;
+  position: relative;
+  display: inline-block;
+  -webkit-transition: color .6s ease;
+  -moz-transition: color .6s ease;
+  -ms-transition: color .6s ease;
+  -o-transition: color .6s ease;
+  transition: color .6s ease;
+}
+.nav-bar a:hover {
+  color: white;
+}
+.nav-bar a::before,
+.nav-bar a::after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  content: "";
+  background: #949494;
+  opacity: 0;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  -ms-transition: .3s ease;
+  -o-transition: .3s ease;
+  transition: .3s ease;
+}
+.nav-bar a::before {
+  top: -16px;
+  left: -16px;
+}
+.nav-bar a::after {
+  bottom: -16px;
+  left: 16px;
+}
+.nav-bar a:hover::before,
+.nav-bar a:hover::after {
+  left: 0;
+  opacity: 1;
+  background: white;
+}
+.nav-bar a:hover::before {
+  top: -8px;
+}
+.nav-bar a:hover::after {
+  bottom: -8px;
+}
+.nav-bar a.current {
+  color: white;
+}
+.nav-bar a.current::before,
+.nav-bar a.current::after {
+  opacity: 1;
+  background: white;
+  left: 0;
+}
+.nav-bar a.current::before {
+  top: -8px;
+}
+.nav-bar a.current::after {
+  bottom: -8px;
+}
+.nav-bar a.current:hover:before {
+  top: -16px;
+  left: 16px;
+  opacity: 0;
+}
+.nav-bar a.current:hover:after {
+  bottom: -16px;
+  left: -16px;
+  opacity: 0;
+}
+.main-content {
+  height: calc(1080px - 260px);
+  padding: 0 0 20px 80px;
+  color: white;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.acc-container {
+  width: 910px;
+}
+.acc-container .acc-item {
+  margin-bottom: 40px;
+}
+.acc-container label {
+  position: relative;
+  z-index: 20;
+  display: inline-block;
+  height: 25px;
+  cursor: pointer;
+  font-size: 25px;
+  font-style: italic;
+  -webkit-transition: color 0.4s ease-in-out;
+  -moz-transition: color 0.4s ease-in-out;
+  -ms-transition: color 0.4s ease-in-out;
+  -o-transition: color 0.4s ease-in-out;
+  transition: color 0.4s ease-in-out;
+}
+.acc-container label:hover {
+  color: #949494;
+}
+.acc-container label::before {
+  height: 16px;
+  width: 16px;
+  content: url(../image/services/plus1.png);
+  position: absolute;
+  left: -25px;
+  top: 2px;
+}
+.acc-container input {
+  display: none;
+}
+.acc-container input:checked + label,
+.acc-container input:checked + label:hover {
+  text-transform: uppercase;
+  font-style: normal;
+  color: #949494;
+}
+.acc-container input:checked + label::first-letter,
+.acc-container input:checked + label:hover::first-letter {
+  color: white;
+}
+.acc-container article {
+  overflow: hidden;
+  height: 0px;
+  position: relative;
+  z-index: 10;
+  -webkit-transition: height 0.6s ease-in-out;
+  -moz-transition: height 0.6s ease-in-out;
+  -ms-transition: height 0.6s ease-in-out;
+  -o-transition: height 0.6s ease-in-out;
+  transition: height 0.6s ease-in-out;
+}
+.acc-container article p {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
+  line-height: 26px;
+  color: #949494;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  padding: 10px 0px;
+  width: 78%;
+}
+.acc-container input:checked ~ article {
+  -webkit-transition: height 0.3s ease-in-out;
+  -moz-transition: height 0.3s ease-in-out;
+  -ms-transition: height 0.3s ease-in-out;
+  -o-transition: height 0.3s ease-in-out;
+  transition: height 0.3s ease-in-out;
+}
+.acc-container input:checked ~ article:nth-child(n) {
+  height: 80px;
+}
+.acc-container input:checked ~ article.h-180 {
+  height: 180px;
+}
+.acc-container input:checked ~ label::before {
+  content: url(../image/services/minus1.png);
+  top: 0px;
+}
+.privacy-policy {
+  text-transform: uppercase;
+  color: #949494;
+  font-size: 11px;
+  letter-spacing: .5px;
+  margin-left: -30px;
+}
+.privacy-policy span {
+  border-bottom: 1px solid #949494;
+}
