@@ -7,7 +7,40 @@ document.addEventListener('DOMContentLoaded', function(){
       var this_type = this.closest('.registration-type').getAttribute('reg-type');
       var this_btn = this.getAttribute('btn');
 
-      show_step(this_btn, this_step, this_type);
+      var allow = true;
+
+      Array.from(this.closest('.registration-step').querySelectorAll('.registration-field')).forEach(function(each){
+        if(each.querySelector('[required]') && this_btn == 'next'){
+
+          var each_input = each.querySelector('[required]');
+
+          if(each_input.value == ''){
+            if(each.querySelector('.registration-field__error')){
+              each.querySelector('.registration-field__error').remove();
+            }
+
+            each.classList.add('_error');
+
+            var error_template = document.createElement('div');
+            error_template.classList = 'registration-field__error';
+            error_template.innerHTML = `<p>Вы не заполнили обязательное поле</p><span></span>`
+            each.appendChild(error_template);
+
+            allow = false;
+          } else {
+            allow = true;
+            each.classList.remove('_error');
+            if(each.querySelector('.registration-field__error')){
+              each.querySelector('.registration-field__error').remove();
+            }
+          }
+        }
+      });
+
+      if(allow !== false) {
+        show_step(this_btn, this_step, this_type);
+      }
+
     });
   });
 
@@ -24,7 +57,6 @@ function show_step(which, step, type){
 
   var ctrls = document.querySelector('.registration-form-ctrls');
 
-
   block_type = document.querySelector('.registration-type[reg-type="' + type + '"]');
   current_step = block_type.querySelector('.registration-step[step="' + step + '"]');
 
@@ -33,8 +65,6 @@ function show_step(which, step, type){
 
   prev_counter = parseInt(step, 10) - 1;
   prev_step = block_type.querySelector('.registration-step[step="' + prev_counter + '"]');
-
-
 
   // [ 1 ]
   if(which == 'next'){
@@ -61,8 +91,9 @@ function show_step(which, step, type){
     }
   }
 
+};
 
-
+function validate_before_step(){
 
 };
 
@@ -108,8 +139,55 @@ Array.from(document.querySelectorAll('.registration-form-ctrl')).forEach(functio
 
 
 
+
+//
 //  Отправка форм
 
+Array.from(document.querySelectorAll('button[type="submit"]')).forEach(function(each){
+  each.addEventListener('click', function(e){
+    var form_type = document.querySelector('.registration-form-ctrl._current').getAttribute('ctrl');
+    
+    var center_phone = document.getElementById('center_phone').value;
+    var center_org_name = document.getElementById('center_org_name').value;
+    var center_email = document.getElementById('center_email').value;
+    var center_inn = document.getElementById('center_inn').value;
+    var center_kpp = document.getElementById('center_kpp').value;
+    var center_juri_name = document.getElementById('center_juri_name').value;
+    var center_juri_address = document.getElementById('center_juri_address').value;
+    var center_real_address = document.getElementById('center_real_address').value;
+
+
+    var users_phone = document.getElementById('users_phone').value;
+    var users_fio = document.getElementById('users_fio').value;
+    var users_post = document.getElementById('users_post').value;
+    var users_city = document.getElementById('users_city').value;
+
+    $.post(
+      '/api/vovan/eboshit.php',
+      {
+        type: form_type,
+
+        center_phone: center_phone,
+        center_org_name: center_org_name,
+        center_email: center_email,
+        center_inn: center_inn,
+        center_kpp: center_kpp,
+        center_juri_name: center_juri_name,
+        center_juri_address: center_juri_address,
+        center_real_address: center_real_address,
+
+        users_phone: users_phone,
+        users_fio: users_fio,
+        users_post: users_post,
+        users_city: users_city,
+      },
+      function (){
+        alert('Отправка прошла успешно');
+      }
+    );
+
+  });
+});
 
 
   

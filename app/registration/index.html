@@ -32,7 +32,7 @@
           </div><img class="registration__img" src="./img/registration.png">
         </div>
         <div class="registration-right">
-          <form class="registration-form" method="POST" action=".php"><span class="registration-form__counter">Шаг&#160;&#160;1 / 3</span>
+          <form class="registration-form" method="POST" action=""><span class="registration-form__counter">Шаг&#160;&#160;1 / 3</span>
             <div class="registration-form-ctrls">
               <div class="registration-form-ctrl _current" ctrl="center"><span class="registration-form-ctrl__img"></span><span class="registration-form-ctrl__text">Обучающий центр</span></div>
               <div class="registration-form-ctrl" ctrl="users"><span class="registration-form-ctrl__img"></span><span class="registration-form-ctrl__text">Слушатель</span></div>
@@ -41,7 +41,7 @@
               <div class="registration-step _show" step="1">
                 <div class="registration-step__title">Личные данные</div>
                 <label class="registration-field"><span class="registration-field__label">Телефон</span>
-                  <input class="registration-field__input" type="text" placeholder="+7 (___) ___-__-__">
+                  <input class="registration-field__input" type="text" id="center_phone" name="center_phone" required placeholder="+7 (___) ___-__-__">
                 </label>
                 <div class="registration-step-footer"><span class="registration-step-footer__desc">Вы сможете отредактировать данную информацию позднее в своём личном кабинете</span>
                   <div class="registration-step-footer__btns">
@@ -52,20 +52,20 @@
               <div class="registration-step" step="2">
                 <div class="registration-step__title">Юридическая информация</div>
                 <label class="registration-field"><span class="registration-field__label">Название организации</span>
-                  <input class="registration-field__input" type="text" placeholder="Волгоград Экспо">
+                  <input class="registration-field__input" type="text" id="center_org_name" name="center_org_name" required placeholder="Волгоград Экспо">
                 </label>
                 <label class="registration-field"><span class="registration-field__label">Электронная почта</span>
-                  <input class="registration-field__input" type="email" placeholder="example@gmail.com">
+                  <input class="registration-field__input" type="email" id="center_email" name="center_email" required placeholder="example@gmail.com">
                 </label>
                 <div class="registration-three">
                   <label class="registration-field"><span class="registration-field__label">ИНН</span>
-                    <input class="registration-field__input" type="text" placeholder="123456789">
+                    <input class="registration-field__input" type="text" id="center_inn" name="center_inn" placeholder="123456789">
                   </label>
                   <label class="registration-field"><span class="registration-field__label">КПП</span>
-                    <input class="registration-field__input" type="text" placeholder="123456789">
+                    <input class="registration-field__input" type="text" id="center_kpp" name="center_kpp" placeholder="123456789">
                   </label>
                   <label class="registration-field"><span class="registration-field__label">Юридическое название</span>
-                    <input class="registration-field__input" type="text" placeholder="123456789">
+                    <input class="registration-field__input" type="text" id="center_juri_name" name="center_juri_name" placeholder="123456789">
                   </label>
                 </div>
                 <div class="registration-step-footer"><span class="registration-step-footer__desc">Вы сможете отредактировать данную информацию позднее в своём личном кабинете</span>
@@ -78,10 +78,10 @@
               <div class="registration-step" step="3">
                 <div class="registration-step__title">Местоположение</div>
                 <label class="registration-field"><span class="registration-field__label">Юридический адрес</span>
-                  <input class="registration-field__input" type="text" placeholder="Москва">
+                  <input class="registration-field__input" type="text" id="center_juri_address" required name="center_juri_address" placeholder="Москва">
                 </label>
                 <label class="registration-field"><span class="registration-field__label">Фактический адрес</span>
-                  <input class="registration-field__input" type="text" placeholder="Санкт-Петербург">
+                  <input class="registration-field__input" type="text" id="center_real_address" name="center_real_address" placeholder="Санкт-Петербург">
                 </label>
                 <div class="registration-step-footer"><span class="registration-step-footer__desc">Вы сможете отредактировать данную информацию позднее в своём личном кабинете</span>
                   <div class="registration-step-footer__btns">
@@ -95,7 +95,7 @@
               <div class="registration-step _show" step="1">
                 <div class="registration-step__title">Личные данные</div>
                 <label class="registration-field"><span class="registration-field__label">Телефон</span>
-                  <input class="registration-field__input" type="text" placeholder="+7 (___) ___-__-__">
+                  <input class="registration-field__input" type="text" id="users_phone" name="users_phone" required placeholder="+7 (___) ___-__-__">
                 </label>
                 <div class="registration-var"><span class="registration-var__text">Войти с помощью:</span><a class="registration-var__link" title="Войти через Стоммаркет"><span class="registration-var__link-img"><span></span></span><span class="registration-var__link-text">Стоммаркет</span></a></div>
                 <div class="registration-step-footer"><span class="registration-step-footer__desc">Вы сможете отредактировать данную информацию позднее в своём личном кабинете</span>
@@ -107,13 +107,13 @@
               <div class="registration-step" step="2">
                 <div class="registration-step__title">Основная информация</div>
                 <label class="registration-field"><span class="registration-field__label">ФИО</span>
-                  <input class="registration-field__input" type="text" placeholder="Богданов Никита Андреевич">
+                  <input class="registration-field__input" type="text" id="users_fio" name="users_fio" required placeholder="Богданов Никита Андреевич">
                 </label>
                 <label class="registration-field"><span class="registration-field__label">Должность</span>
-                  <input class="registration-field__input" type="text" placeholder="Fronted developer">
+                  <input class="registration-field__input" type="text" id="users_post" name="users_post" required placeholder="Fronted developer">
                 </label>
                 <label class="registration-field"><span class="registration-field__label">Город</span>
-                  <input class="registration-field__input" type="text" placeholder="Санкт-Петербург">
+                  <input class="registration-field__input" type="text" id="users_city" name="users_city" required placeholder="Санкт-Петербург">
                 </label>
                 <div class="registration-step-footer"><span class="registration-step-footer__desc">Вы сможете отредактировать данную информацию позднее в своём личном кабинете</span>
                   <div class="registration-step-footer__btns">

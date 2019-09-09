@@ -5,6 +5,7 @@
   --label_grey: #61656B;
   --text_grey_light: #C4C4C4;
   --very_light_blue: #EAECEF;
+  --error_red: #FF0000;
 }
 html,
 body {
@@ -250,7 +251,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 5;
+  z-index: -1;
 }
 .registration__container {
   width: 100%;
@@ -343,7 +344,7 @@ button {
   font-size: 28px;
   line-height: 38px;
   color: var(--dirty_blue);
-  margin-bottom: 120px;
+  margin-bottom: 118px;
 }
 .registration-step._show {
   display: flex;
@@ -439,8 +440,9 @@ button {
 }
 .registration-load-img span {
   width: 52px;
-  height: auto;
+  height: 42px;
   background: url('../img/svg/photo.svg') no-repeat center center;
+  margin-bottom: 8px;
 }
 .registration-load-img p {
   font-weight: 600;
@@ -585,6 +587,35 @@ button {
   width: 100%;
   color: var(--text_grey_light);
   border-bottom: 1px solid #61656B;
+}
+.registration-field._error {
+  position: relative;
+}
+.registration-field._error .registration-field__input {
+  border-color: var(--error_red);
+}
+.registration-field._error .registration-field__error {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  right: 5px;
+  bottom: 15px;
+}
+.registration-field._error .registration-field__error p {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 22px;
+  color: var(--error_red);
+}
+.registration-field._error .registration-field__error span {
+  width: 20px;
+  height: 17px;
+  background: url('../img/svg/danger.svg') no-repeat center center;
+  margin-left: 10px;
+}
+.registration-field__error {
+  display: none;
 }
 .registration-three {
   display: flex;
