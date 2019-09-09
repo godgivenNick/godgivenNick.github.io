@@ -571,6 +571,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
   margin-bottom: 50px;
 }
 .registration-field__label {
@@ -581,12 +582,24 @@ button {
   margin-bottom: 16px;
 }
 .registration-field__input {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 22px;
   line-height: 2.5;
   width: 100%;
-  color: var(--text_grey_light);
+  color: var(--dirty_blue);
   border-bottom: 1px solid #61656B;
+}
+.registration-field__input::-webkit-input-placeholder {
+  color: var(--text_grey_light);
+}
+.registration-field__input:-ms-input-placeholder {
+  color: var(--text_grey_light);
+}
+.registration-field__input::-ms-input-placeholder {
+  color: var(--text_grey_light);
+}
+.registration-field__input::placeholder {
+  color: var(--text_grey_light);
 }
 .registration-field._error {
   position: relative;
@@ -622,8 +635,18 @@ button {
   right: -10px;
   top: -2px;
   content: '*';
-  font-size: 16px;
-  color: var(--error_red);
+  font-size: 18px;
+  line-height: 18px;
+  color: #B7B7B7;
+}
+.registration-field._accept {
+  position: relative;
+}
+.registration-field._accept::after {
+  position: absolute;
+  content: url('../img/svg/accept.svg');
+  right: 5px;
+  bottom: 15px;
 }
 .registration-field__error {
   display: none;
@@ -636,6 +659,16 @@ button {
 }
 .registration-three .registration-field {
   width: calc(100% / 3 - 10px);
+}
+.registration-field__add-phone {
+  align-self: flex-end;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+  color: var(--brand_blue);
+  position: absolute;
+  bottom: -30px;
 }
 .footer {
   width: 100%;

@@ -23,7 +23,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
             var error_template = document.createElement('div');
             error_template.classList = 'registration-field__error';
-            error_template.innerHTML = `<p>Вы не заполнили обязательное поле</p><span></span>`
+
+            if(each.closest('.registration-three')){
+              error_template.innerHTML = `<span></span>`;
+            } else {
+              error_template.innerHTML = `<p>Вы не заполнили обязательное поле</p><span></span>`
+            }
+
             each.appendChild(error_template);
 
             allow = false;
@@ -93,11 +99,6 @@ function show_step(which, step, type){
 
 };
 
-function validate_before_step(){
-
-};
-
-
 
 
 //  управление типами регистрации
@@ -128,10 +129,47 @@ Array.from(document.querySelectorAll('.registration-form-ctrl')).forEach(functio
 
     }
     
-
-    
-
   });
+
+});
+
+
+
+// добавление нового поля с номером
+document.addEventListener('click', function(e){
+
+  if(e.target.closest('.registration-field__add-phone')){
+
+    e.preventDefault();
+
+    var each_wrap = e.target.closest('.registration-field');
+    var container = e.target.closest('.registration-step');
+
+    each_wrap.querySelector('.registration-field__add-phone').remove();
+
+    // var new_html = each_wrap.innerHTML;
+    var new_html = document.createElement('label');
+    new_html.innerHTML = `
+      <span class="registration-field__label">Дополнительный телефон</span>
+      <input class="registration-field__input" type="tel" name="dop_phone" placeholder="+7 (___) ___-__-__">
+      <div class="registration-field__add-phone">+ добавить еще один номер</div>
+    `;
+    new_html.classList = 'registration-field';
+
+    var each_footer = container.querySelector('.registration-step-footer');
+
+    container.insertBefore(new_html, each_footer);
+
+
+    //
+    // var ff = new Inputmask("+7 (999) 999-99-99", {
+    //   showMaskOnHover: false,
+    // });
+
+    // ff.mask(new_html);
+    // new_html.inputmask.unmaskedvalue();
+
+  }
 
 });
 

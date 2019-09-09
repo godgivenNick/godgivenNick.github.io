@@ -27,7 +27,41 @@ document.addEventListener('DOMContentLoaded', function(){
 
   if(document.querySelector('input[required]')){
     Array.from(document.querySelectorAll('input[required]')).forEach(function(each){
-      each.closest('.registration-field').classList.add('_required');
+
+      var each_wrap = each.closest('.registration-field');
+
+      each_wrap.classList.add('_required');
+
+      each.addEventListener('change', function(e){
+
+        if(each.getAttribute('type') == 'tel'){
+
+          if(each.value.split('').length == 18){
+            each_wrap.classList.add('_accept');
+          } else {
+            each_wrap.classList.remove('_accept');
+          }
+
+        }
+
+        else if(each.getAttribute('type') !== 'tel'){
+
+          if(each.value !== ''){
+
+            each_wrap.classList.remove('_error');
+            if(each_wrap.querySelector('.registration-field__error')){
+              each_wrap.querySelector('.registration-field__error').remove();
+            }
+
+            each_wrap.classList.add('_accept');
+
+          } else {
+            each_wrap.classList.remove('_accept');
+          }
+
+        }
+
+      });
     });
   }
   
