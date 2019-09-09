@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
   
   }
+
+  if(document.querySelector('input[required]')){
+    Array.from(document.querySelectorAll('input[required]')).forEach(function(each){
+      each.closest('.registration-field').classList.add('_required');
+    });
+  }
   
 });
 

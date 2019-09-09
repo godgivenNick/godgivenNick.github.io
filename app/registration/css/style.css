@@ -614,6 +614,17 @@ button {
   background: url('../img/svg/danger.svg') no-repeat center center;
   margin-left: 10px;
 }
+.registration-field._required .registration-field__label {
+  position: relative;
+}
+.registration-field._required .registration-field__label::after {
+  position: absolute;
+  right: -10px;
+  top: -2px;
+  content: '*';
+  font-size: 16px;
+  color: var(--error_red);
+}
 .registration-field__error {
   display: none;
 }
