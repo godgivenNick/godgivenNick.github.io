@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72.319" height="76.64" viewBox="0 0 72.319 76.64">
+  <g id="South_North_West_East" data-name="South North West East" transform="translate(-679.126 -2143.837) rotate(30)">
+    <g id="Group_136" data-name="Group 136" transform="translate(1681.552 1501.611)">
+      <g id="Group_132" data-name="Group 132" transform="translate(27.112)">
+        <path id="Path_14043" data-name="Path 14043" d="M6015,1547.461l2.746-27.461v30.207l-2.746-2.746" transform="translate(-6015 -1520)" fill="#ebebeb"/>
+        <path id="Path_14044" data-name="Path 14044" d="M6017.746,1547.461,6015,1520v30.207l2.746-2.746" transform="translate(-6012.254 -1520)" fill="#bbb"/>
+      </g>
+      <g id="Group_134" data-name="Group 134" transform="translate(59.716 27.332) rotate(90)">
+        <path id="Path_14043-2" data-name="Path 14043" d="M0,27.46,2.746,0V30.206L0,27.46" transform="translate(0 0)" fill="#ebebeb"/>
+        <path id="Path_14044-2" data-name="Path 14044" d="M2.746,27.46,0,0V30.206L2.746,27.46" transform="translate(2.746 0)" fill="#bbb"/>
+      </g>
+      <g id="Group_135" data-name="Group 135" transform="translate(30.206 27.332) rotate(90)">
+        <path id="Path_14043-3" data-name="Path 14043" d="M0,2.746l2.746,27.46V0L0,2.746" fill="#ebebeb"/>
+        <path id="Path_14044-3" data-name="Path 14044" d="M2.746,2.746,0,30.206V0L2.746,2.746" transform="translate(2.746)" fill="#bbb"/>
+      </g>
+      <g id="Group_133" data-name="Group 133" transform="translate(27.112 29.95)">
+        <path id="Path_14043-4" data-name="Path 14043" d="M6015,1522.746l2.746,27.46V1520l-2.746,2.746" transform="translate(-6015 -1520)" fill="#ebebeb"/>
+        <path id="Path_14044-4" data-name="Path 14044" d="M6017.746,1522.746l-2.746,27.46V1520l2.746,2.746" transform="translate(-6012.254 -1520)" fill="#bbb"/>
+      </g>
+    </g>
+    <text id="S" transform="translate(1707.784 1499.5)" fill="#707070" font-size="11" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">S</tspan></text>
+    <text id="W" transform="translate(1671.402 1534.7)" fill="#707070" font-size="11" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">W</tspan></text>
+    <text id="N" transform="translate(1707.572 1571.5)" fill="#707070" font-size="11" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">N</tspan></text>
+    <text id="E" transform="translate(1741.402 1535.43)" fill="#707070" font-size="11" font-family="HelveticaNeue, Helvetica Neue"><tspan x="0" y="0">E</tspan></text>
+  </g>
+</svg>
