@@ -146,9 +146,10 @@
     </header><!-- Фильтр & Меню слева -->
     <section class="side">
       <div class="side__container"><!-- Фильтр -->
+        <div class="filter__hide-btn">Показать фильтр</div>
         <div class="filter">
           <div class="filter__header"><span class="filter__title">Поиск по параметрам</span>
-            <div class="filter__hide-btn">Сбросить фильтр</div>
+            <div class="filter__reset-btn">Сбросить фильтр</div>
           </div>
           <div class="filter-main">
             <div class="dd filter-main__dd">
@@ -185,9 +186,61 @@
               </div>
             </div>
           </div>
-          <div class="filter-sub"></div>
+          <div class="filter-sub"><!-- Выбор этажей -->
+            <div class="filter-sub-floors"><span class="filter-sub-floors__title">Этаж</span>
+              <div class="filter-sub-floors__list">
+                <label class="chfloor filter-sub-floors__floor">
+                  <input type="checkbox"><span>0</span>
+                </label>
+                <label class="chfloor filter-sub-floors__floor">
+                  <input type="checkbox"><span>1</span>
+                </label>
+                <label class="chfloor filter-sub-floors__floor">
+                  <input type="checkbox"><span>2</span>
+                </label>
+                <label class="chfloor filter-sub-floors__floor">
+                  <input type="checkbox"><span>2a</span>
+                </label>
+                <label class="chfloor filter-sub-floors__floor">
+                  <input type="checkbox"><span>3</span>
+                </label>
+                <label class="chfloor filter-sub-floors__floor">
+                  <input type="checkbox"><span>4</span>
+                </label>
+                <label class="chfloor filter-sub-floors__floor">
+                  <input type="checkbox"><span>5</span>
+                </label>
+              </div>
+            </div><!-- Остальные параметры со switch'ем -->
+            <ul class="filter-sub__switches">
+              <li class="filter-sub__switch"><span class="filter-sub__switch-label">Акция</span>
+                <label class="switch">
+                  <input type="checkbox">
+                  <div class="switch__oval"></div>
+                </label>
+              </li>
+              <li class="filter-sub__switch"><span class="filter-sub__switch-label">С кондиционером</span>
+                <label class="switch">
+                  <input type="checkbox">
+                  <div class="switch__oval"></div>
+                </label>
+              </li>
+              <li class="filter-sub__switch"><span class="filter-sub__switch-label">Своя планировка</span>
+                <label class="switch">
+                  <input type="checkbox">
+                  <div class="switch__oval"></div>
+                </label>
+              </li>
+              <li class="filter-sub__switch"><span class="filter-sub__switch-label">Показать занятые</span>
+                <label class="switch">
+                  <input type="checkbox">
+                  <div class="switch__oval"></div>
+                </label>
+              </li>
+            </ul>
+          </div>
           <button class="filter__submit btn btn--blue">Показать 125 помещений</button>
-          <div class="filter__show-sub">Показать дополнительные параметры</div>
+          <div class="filter__show-sub">Дополнительные параметры</div>
         </div><!-- Меню -->
         <div class="side-menu"><!-- Дубль номера телефона для мобилки --><a class="side-menu__tel-mobile" href="tel:88127401902">8 (812) 740 19 02</a><!-- Кнопка вернуться назад. Дисплеим, если это не домашняя стр. --><a class="side-menu__back-btn" href="">← Бизнес-центр «К-1»</a>
           <ul class="side-nav"><!-- Для текущей стр. добавляем к 'side-nav__item' класс '_current' -->
@@ -197,9 +250,10 @@
             <li class="side-nav__item"><a href="">Сервисы на сайте</a></li>
             <li class="side-nav__item"><a href="">Контакты</a></li>
             <li class="side-nav__item"><a href="">Отзывы</a></li>
-            <li class="side-nav__item"><a class="_favorites" href=""><svg class='icon-star'>
+            <li class="side-nav__item _favorites"><a href=""><svg class='icon-star'>
 <use xlink:href="#star"></use>
-</svg>Избранное <span>(2)</span></a><!-- Отображаем только если в заявке что-то есть --><a class="_in-order" href="">В заявке <span>(2)</span></a></li>
+</svg>Избранное <span>(2)</span></a></li>
+            <li class="side-nav__item _in-order"><!-- Отображаем только если в заявке что-то есть --><a href="">В заявке <span>(2)</span></a></li>
           </ul>
           <div class="side-menu__footer"><a class="side-menu__footer-mail" href="">office@kvartal.biz</a>
             <div class="side-menu__footer-links"><a class="side-menu__footer-link __vk" href=""><svg>
@@ -223,7 +277,14 @@
         </div>
       </div>
     </section><!-- Главный блок --><!-- Тут буду поочередно подрубать странички -->
-    <main class="main"></main><i class="main-overlay"></i><!-- Подрубка общих скриптов и библ. -->
+    <main class="main"><!-- Хлебные крошки -->
+      <ul class="crumbs">
+        <li class="crumbs__item"><a href="">Главная</a></li>
+        <li class="crumbs__item"><a href="">Next page</a></li>
+        <li class="crumbs__item"><a href="">Next next page</a></li>
+      </ul>
+    </main>
+    <footer class="footer"><span>© ЗАО &laquo;Квартал&raquo;. Все права защищены.</span><a href="" target="_blank" title="Политика конфиденциальности">Политика конфиденциальности</a><a href="http://instagram.com/midyanets" target="_blank" title="instagram.com/midyanets">© Midyanets, 2019</a></footer><i class="main-overlay"></i><!-- Подрубка общих скриптов и библ. -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script><!-- Селекты -->
     <script type="application/javascript" src="./js/select.js"></script>
